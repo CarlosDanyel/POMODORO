@@ -8,5 +8,4 @@ export function star(min, seg) {
   timer.updateDisplay();
 
   e.registerControls();
-  e.setMinutes();
 }

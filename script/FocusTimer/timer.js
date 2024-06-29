@@ -1,4 +1,3 @@
-import { reset } from "./actions.js";
 import * as el from "./elements.js";
 import { kichenTimer } from "./sound.js";
 import state from "./state.js";
@@ -20,8 +19,12 @@ export function countDown() {
     minutes--;
   }
 
+  if (minutes < -0) {
+    seconds = 59;
+    minutes--;
+  }
+
   if (minutes < 0) {
-    reset();
     kichenTimer.play();
     return;
   }
@@ -36,4 +39,19 @@ export function updateDisplay(minutes, seconds) {
   seconds = seconds ?? state.seconds;
   el.minutes.textContent = String(minutes).padStart(2, "0");
   el.seconds.textContent = String(seconds).padStart(2, "0");
+}
+
+export function StatePluss() {
+  let currentMinutes = Number(el.minutes.textContent);
+  currentMinutes += 5;
+  el.minutes.textContent = String(currentMinutes).padStart(2, "0");
+}
+
+export function StateMenus() {
+  let currentMinutes = Number(el.minutes.textContent);
+  currentMinutes -= 5;
+  if (currentMinutes < 0) {
+    currentMinutes = 0;
+  }
+  el.minutes.textContent = String(currentMinutes).padStart(2, "0");
 }

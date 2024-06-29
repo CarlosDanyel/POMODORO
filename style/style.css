@@ -6,24 +6,13 @@
 }
 
 :root {
-  --bg-color: #121214;
-  --text-color: #f8f8fc;
-  --primary-color: #42d3ff;
+  --bg-color: #ffffff;
+  --text-color: #323238;
+  --primary-color: #02799d;
   --controls-bg-color: #242424;
-  --button-secudary: #f8f8fc;
+  --button-bg: #e1e1e6;
 
   font-size: clamp(40%, 1% + 2vw, 62.5%);
-}
-
-html.light {
-  --bg-color: #f8f8fc;
-  --text-color: #121214;
-  --controls-bg-color: #242424;
-}
-
-html.light .ph-sun,
-html:not(.light) .ph-moon {
-  display: none;
 }
 
 .only-sr {
@@ -38,17 +27,6 @@ html:not(.light) .ph-moon {
   appearance: none;
 }
 
-.toggle-mode {
-  position: absolute;
-  right: 3.2rem;
-  top: 3.2rem;
-
-  font-size: 3.2rem;
-  line-height: 0;
-
-  color: var(--text-color);
-}
-
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -59,8 +37,17 @@ body {
   width: 100%;
 }
 
+body,
+i {
+  font-family: "Roboto", sans-serif;
+}
+
 .app {
-  text-align: center;
+  display: flex;
+  gap: 19.2rem;
+  align-items: center;
+
+  padding: 0 2rem;
 }
 
 .flex {
@@ -69,41 +56,66 @@ body {
 }
 
 .timer {
-  font-size: 9.6rem;
+  font-size: 12.6rem;
   font-weight: bold;
-  font-family: sans-serif;
 }
 
 .controls {
-  margin-top: 1.6rem;
-  padding: 2.2rem 4rem;
+  margin-top: 4.8rem;
 
-  justify-content: center;
-  gap: 1.6rem;
+  justify-content: space-between;
+
   border-radius: 999rem;
-
-  background-color: var(--controls-bg-color);
 }
 
 button {
   background-color: transparent;
   border: none;
 
-  color: var(--primary-color);
+  color: var(--text-color);
   cursor: pointer;
 
-  font-size: 6.4rem;
+  font-size: 4.4rem;
 }
 
-.secundary {
-  color: var(--button-secudary);
+.containerSound {
+  width: 100%;
+  display: flex;
+  gap: 32px;
+
+  flex-wrap: wrap;
 }
 
-.running .ph-play-circle,
-.running .ph-timer,
-.music-on .ph-speaker-none,
-html:not(.running) .ph-pause-circle,
-html:not(.running) .ph-stop-circle,
-html:not(.music-on) .ph-speaker-high {
-  display: none;
+.containerSound .music {
+  align-items: center;
+  justify-content: center;
+  flex-basis: 13rem;
+  flex-grow: 1;
+
+  padding: 4.8rem 0;
+
+  background-color: var(--button-bg);
+  border-radius: 2.4rem;
+
+  transition: 400ms;
+}
+
+.containerSound .music svg {
+  fill: var(--text-color);
+  transition: 400ms;
+}
+
+.music.on {
+  background-color: var(--primary-color);
+}
+
+.music.on svg {
+  fill: var(--bg-color);
+}
+
+@media (max-width: 860px) {
+  .app {
+    flex-direction: column;
+    gap: 8rem;
+  }
 }
