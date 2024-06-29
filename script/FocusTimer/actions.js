@@ -12,7 +12,6 @@ export function toggleRunning() {
 
 export function reset() {
   state.isRunning = false;
-  document.documentElement.classList.remove("running");
   timer.updateDisplay();
   audios.buttonPressAudio.play();
 }

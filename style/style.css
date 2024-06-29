@@ -59,6 +59,11 @@ body {
   width: 100%;
 }
 
+body,
+i {
+  font-family: "Roboto", sans-serif;
+}
+
 .app {
   text-align: center;
 }
