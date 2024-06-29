@@ -11,6 +11,12 @@ export function toggleRunning() {
 
 export function mais() {
   timer.StatePluss();
+}
+
+export function reset() {
+  state.isRunning = false;
+  timer.updateDisplay();
+
   audios.buttonPressAudio.play();
 }
 
